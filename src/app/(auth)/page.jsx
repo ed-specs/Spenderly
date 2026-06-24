@@ -1,4 +1,5 @@
 import ButtonComponent from "../ui/components/Buttons";
+import InputComponent from "../ui/components/Inputs";
 import Link from "next/link";
 
 export default function SignIn() {
@@ -19,11 +20,7 @@ export default function SignIn() {
           <div className="flex flex-col gap-1">
             <label htmlFor="">Username</label>
 
-            <input
-              type="text"
-              placeholder="Enter your username"
-              className="border border-gray-300 rounded-xl py-3 px-5 outline-none focus:border-green-700"
-            />
+            <InputComponent type="text" placeholder="Enter your username" />
           </div>
 
           <div className="flex flex-col gap-1">
@@ -34,11 +31,7 @@ export default function SignIn() {
               </Link>
             </div>
 
-            <input
-              type="password"
-              placeholder="Enter your password"
-              className="border border-gray-300 rounded-xl py-3 px-5 outline-none focus:border-green-700"
-            />
+            <InputComponent type="password" placeholder="Enter your password" />
           </div>
         </div>
         {/* buttons */}
