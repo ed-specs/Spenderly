@@ -1,5 +1,5 @@
-import { inter } from "next/font/google";
+import { Inter } from "next/font/google";
 
-export const interFont = inter({
+export const inter = Inter({
   subsets: ["latin"],
 });
