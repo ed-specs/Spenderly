@@ -7,7 +7,7 @@ export default function InputComponent({
     <input
       type={type}
       placeholder={placeholder}
-      className="w-full border border-gray-300 rounded-xl py-3 px-5 outline-none focus:border-green-700"
+      className="w-full border border-gray-300 rounded-xl py-3 px-4 outline-none focus:border-green-700"
       {...props}
     />
   );
