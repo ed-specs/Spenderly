@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function CreateAccount() {
   return (
     <div className=" min-h-dvh flex items-center justify-center text-sm p-5">
-      <div className="flex flex-col gap-6 w-full max-w-md">
+      <div className="flex flex-col gap-6 w-full max-w-md lg:max-w-lg">
         {/* header */}
         <div className="flex flex-col gap-1 text-center">
           <h1 className="text-2xl font-bold">
@@ -20,13 +20,13 @@ export default function CreateAccount() {
         {/* main */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 w-full">
               <label htmlFor="">First name</label>
 
               <InputComponent type="text" placeholder="John" />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 w-full">
               <label htmlFor="">Last name</label>
 
               <InputComponent type="text" placeholder="Doe" />
