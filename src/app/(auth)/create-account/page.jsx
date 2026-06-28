@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function CreateAccount() {
   return (
-    <div className=" min-h-dvh flex items-center justify-center text-sm p-5">
+    <div className=" min-h-dvh flex items-center justify-center text-sm md:text-base p-5">
       <div className="flex flex-col gap-6 w-full max-w-md lg:max-w-lg">
         {/* header */}
         <div className="flex flex-col gap-1 text-center">
