@@ -1,11 +1,13 @@
 "use client";
-import Header from "@/app/ui/components/Header";
+import Navigation from "@/app/ui/components/Navigation";
+import MainContainer from "@/app/ui/components/MainContainer";
+import LayoutContainer from "../ui/components/LayoutContainer";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-dvh relative flex flex-col gap-5 bg-gray-50 p-5 xl:flex-row xl:items-stretch">
-      <Header />
-      <main className="flex-1 rounded-2xl bg-white p-6 border border-gray-300 h-[1000px] xl:ml-[25rem]" />
-    </div>
+    <LayoutContainer>
+      <Navigation />
+      <MainContainer></MainContainer>
+    </LayoutContainer>
   );
 }
