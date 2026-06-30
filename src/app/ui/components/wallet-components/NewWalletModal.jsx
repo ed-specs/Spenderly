@@ -1,13 +1,8 @@
-// components/wallet-components/MoneyCardModal.jsx
 "use client";
+import { useEffect, useRef } from "react";
 
-import { useRef, useEffect } from "react";
-import { X } from "lucide-react";
-
-export default function MoneyCardModal({ isOpen, onClose, cardData }) {
+export default function NewWalletModal({ isOpen, onClose }) {
   const modalRef = useRef(null);
-
-  // Close modal when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -37,14 +32,13 @@ export default function MoneyCardModal({ isOpen, onClose, cardData }) {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-      <div
-        ref={modalRef}
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto relative animate-in fade-in zoom-in duration-200"
-      >
-        asd
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+    >
+      <div className="flex flex-col gap-4 p-4 rounded-2xl bg-white w-full max-w-lg mx-auto">
+        {/* header */}
       </div>
     </div>
   );

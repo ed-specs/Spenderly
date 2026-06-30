@@ -1,11 +1,13 @@
 "use client";
 import { useState, useRef } from "react";
+import Link from "next/link";
 import Navigation from "@/app/ui/components/Navigation";
 import MainContainer from "../ui/components/MainContainer";
 import LayoutContainer from "../ui/components/LayoutContainer";
 import HeaderCards from "../ui/components/wallet-components/HeaderCards";
 import MoneyCards from "../ui/components/wallet-components/MoneyCards";
 import MoneyCardModal from "../ui/components/wallet-components/MoneyCardModal"; // ← Import the modal
+import NewWalletModal from "../ui/components/wallet-components/NewWalletModal";
 import {
   HandCoins,
   Wallet,
@@ -82,6 +84,7 @@ export default function Wallets() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null); // ← Track selected card
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isNewWalletModalOpen, setIsNewWalletModalOpen] = useState(false);
 
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
@@ -90,6 +93,14 @@ export default function Wallets() {
   const openModal = (cardData) => {
     setSelectedCard(cardData);
     setIsModalOpen(true);
+  };
+
+  const openNewWalletModal = () => {
+    setIsNewWalletModalOpen(true);
+  };
+
+  const closeNewWalletModal = () => {
+    setIsNewWalletModalOpen(false);
   };
 
   const closeModal = () => {
@@ -289,9 +300,7 @@ export default function Wallets() {
                     id=""
                     className="cursor-pointer rounded-lg outline-none border border-gray-300 focus:border-green-700 px-4 py-2 text-sm xl:text-base w-full md:w-72 lg:w-96 bg-white transition-colors duration-150"
                   >
-                    <option value="" selected>
-                      Default
-                    </option>
+                    <option value="default">Default</option>
                     <option value="" className="">
                       Ascending
                     </option>
@@ -306,7 +315,10 @@ export default function Wallets() {
 
           {/* cards */}
           <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            <button className="cursor-pointer col-span-4 md:col-span-1 relative p-5 rounded-2xl flex flex-col items-center justify-center gap-1 text-gray-400 border-2 border-dashed border-gray-400 hover:border-green-700 hover:text-green-700 transition-colors duration-150">
+            <button
+              onClick={openNewWalletModal}
+              className="cursor-pointer col-span-4 md:col-span-1 relative p-5 rounded-2xl flex flex-col items-center justify-center gap-1 text-gray-400 border-2 border-dashed border-gray-400 hover:border-green-700 hover:text-green-700 transition-colors duration-150"
+            >
               <CirclePlus strokeWidth={1.5} className="size-14 " />
               <span className="text-sm font-medium ">New wallet</span>
             </button>
@@ -324,6 +336,25 @@ export default function Wallets() {
             ))}
           </div>
         </div>
+
+        {/* recent transactions */}
+        <div className="flex col-gap-4 w-full">
+          <div className="flex items-center justify-between w-full">
+            <div className="flex">
+              <h3 className="font-semibold">Recent transactions</h3>
+            </div>
+
+            <div className="flex">
+              <Link
+                href="/transactions"
+                className="flex items-center gap-2 text-gray-500 hover:text-green-700 transition  duration-150"
+              >
+                <span className="text-sm ">View all transactions</span>
+                <ChevronRight strokeWidth={1.5} className="size-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
       </MainContainer>
 
       {/* Money Card Modal */}
@@ -331,6 +362,11 @@ export default function Wallets() {
         isOpen={isModalOpen}
         onClose={closeModal}
         cardData={selectedCard}
+      />
+
+      <NewWalletModal
+        isOpen={isNewWalletModalOpen}
+        onClose={closeNewWalletModal}
       />
     </LayoutContainer>
   );
