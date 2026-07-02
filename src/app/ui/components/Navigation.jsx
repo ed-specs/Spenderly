@@ -194,86 +194,76 @@ export default function Navigation() {
           </button>
 
           {/* Brand */}
-          <div className="flex flex-col mb-6">
-            <h1 className="text-2xl font-bold text-green-700">Spenderly</h1>
-            <p className="text-gray-500 font-semibold text-sm">
-              Save.Track.Manage
-            </p>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="size-12 bg-green-700 rounded-full"></div>
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-bold text-green-700">Spenderly</h1>
+              <p className="text-gray-500 font-semibold text-sm">
+                Save.Track.Manage
+              </p>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-6 w-full h-full ">
-            <div className="flex items-center gap-4">
-              {/* logo here */}
-              <div className="hidden xl:flex size-12 bg-green-700 rounded-full"></div>
-              <div className="flex flex-col">
-                <h1 className="text-2xl font-bold text-green-700">Spenderly</h1>
-                <p className="hidden xl:flex text-gray-500 font-semibold text-base">
-                  Save.Track.Manage
-                </p>
-              </div>
+          <div className="relative flex flex-col gap-4 h-full">
+            <div className="flex flex-col gap-1">
+              <p className="text-gray-500 font-semibold text-sm">Menu</p>
+
+              {/* Navigation */}
+              <nav className="flex flex-col flex-1">
+                {MENU_LINKS.map((link) => {
+                  const Icon = link.icon;
+                  const isActive = pathname === link.href;
+
+                  return (
+                    <Link
+                      key={link.title}
+                      href={link.href}
+                      onClick={closeSidebar}
+                      className={`flex items-center gap-4 px-4 py-2.5 ${isActive ? "bg-green-700 text-white hover:bg-green-800" : "text-gray-700 hover:text-green-700 hover:bg-gray-100"} rounded-lg transition-colors duration-150 `}
+                    >
+                      <Icon
+                        strokeWidth={1.5}
+                        className="size-5 group-hover:text-green-700"
+                      />
+                      <span className="font-medium">{link.title}</span>
+                    </Link>
+                  );
+                })}
+              </nav>
             </div>
 
-            <div className="relative hidden xl:flex xl:flex-col gap-4 h-full">
-              <div className=" flex flex-col gap-1">
-                <p className="text-gray-500 font-semibold text-sm">Menu</p>
+            <div className="flex flex-col gap-1 h-full">
+              <p className="text-gray-500 font-semibold text-sm">Settings</p>
 
-                {/* Navigation */}
-                <nav className="flex flex-col flex-1">
-                  {MENU_LINKS.map((link) => {
-                    const Icon = link.icon;
-                    const isActive = pathname === link.href;
+              {/* Navigation */}
+              <nav className="flex flex-col flex-1 ">
+                {SETTINGS_LINKS.map((link) => {
+                  const Icon = link.icon;
+                  const isActive = pathname === link.href;
 
-                    return (
-                      <Link
-                        key={link.title}
-                        href={link.href}
-                        onClick={closeSidebar}
-                        className={`flex items-center gap-4 px-4 py-2.5 ${isActive ? "bg-green-700 text-white hover:bg-green-800" : "text-gray-700 hover:text-green-700 hover:bg-gray-100"} rounded-lg transition-colors duration-150 `}
-                      >
-                        <Icon
-                          strokeWidth={1.5}
-                          className="size-5 group-hover:text-green-700"
-                        />
-                        <span className="font-medium">{link.title}</span>
-                      </Link>
-                    );
-                  })}
-                </nav>
-              </div>
+                  return (
+                    <Link
+                      key={link.title}
+                      href={link.href}
+                      onClick={closeSidebar}
+                      className={`flex items-center gap-4 px-4 py-2.5 ${isActive ? "bg-green-700 text-white hover:bg-green-800" : "text-gray-700 hover:text-green-700 hover:bg-gray-100"} rounded-lg transition-colors duration-150 `}
+                    >
+                      <Icon
+                        strokeWidth={1.5}
+                        className="size-5 group-hover:text-green-700"
+                      />
+                      <span className="font-medium">{link.title}</span>
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
 
-              <div className=" flex flex-col gap-1 h-full">
-                <p className="text-gray-500 font-semibold text-sm">Settings</p>
-
-                {/* Navigation */}
-                <nav className="flex flex-col flex-1 ">
-                  {SETTINGS_LINKS.map((link) => {
-                    const Icon = link.icon;
-                    const isActive = pathname === link.href;
-
-                    return (
-                      <Link
-                        key={link.title}
-                        href={link.href}
-                        onClick={closeSidebar}
-                        className={`flex items-center gap-4 px-4 py-2.5 ${isActive ? "bg-green-700 text-white hover:bg-green-800" : "text-gray-700 hover:text-green-700 hover:bg-gray-100"} rounded-lg transition-colors duration-150 `}
-                      >
-                        <Icon
-                          strokeWidth={1.5}
-                          className="size-5 group-hover:text-green-700"
-                        />
-                        <span className="font-medium">{link.title}</span>
-                      </Link>
-                    );
-                  })}
-                </nav>
-              </div>
-
-              <div className="flex">
-                <button className="cursor-pointer bottom-0 left-0 w-full flex items-center gap-4 px-4 py-2.5 text-gray-700 hover:text-green-700 hover:bg-gray-100 rounded-lg transition-colors duration-150">
-                  <LogOut strokeWidth={1.5} className="size-5 text-red-500" />
-                  <span className="font-medium text-red-500">Logout</span>
-                </button>
-              </div>
+            <div className="flex">
+              <button className="cursor-pointer bottom-0 left-0 w-full flex items-center gap-4 px-4 py-2.5 text-gray-700 hover:text-green-700 hover:bg-gray-100 rounded-lg transition-colors duration-150">
+                <LogOut strokeWidth={1.5} className="size-5 text-red-500" />
+                <span className="font-medium text-red-500">Logout</span>
+              </button>
             </div>
           </div>
         </div>
